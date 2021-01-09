@@ -1,0 +1,7 @@
+relational-data-access/bin
+relational-data-access/build
+relational-data-access/gradle
+*.gradle/
+*.idea/
+*.project
+*.settings/
