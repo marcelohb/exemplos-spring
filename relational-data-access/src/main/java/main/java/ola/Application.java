@@ -34,7 +34,7 @@ public class Application implements CommandLineRunner {
                 "id SERIAL, primeiro_nome VARCHAR(255), ultimo_nome VARCHAR(255))");
 
         List<Integer> l = Arrays.asList(1,2,3,4,5);
-        log.info("Tamanho " + l.stream().map(n -> n));
+        log.info("Tamanho " + l.size());
         
         List<Object[]> splitUpNames = Arrays.asList("Joao Watson", "Jeferson Sonho", "Jose Bloco", "Jose Cumprido").stream()
                 .map(name -> name.split(" "))
