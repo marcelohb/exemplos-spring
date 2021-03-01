@@ -1,0 +1,24 @@
+domain/person/Address.java
+ domain.person.Address
+domain/document/NIF.java
+ domain.document.NIF
+application/account/CreateNewAccount.java
+ application.account.CreateNewAccount
+domain/address/Country.java
+ domain.address.Country
+domain/account/AccountRepository.java
+ domain.account.AccountRepository
+application/account/AccountFactory.java
+ application.account.AccountFactory
+domain/person/Person.java
+ domain.person.Person
+domain/account/OpenNewAccount.java
+ domain.account.OpenNewAccount
+Application.java
+ Application
+domain/account/Account.java
+ domain.account.Account
+application/account/AccountDto.java
+ application.account.AccountDto
+domain/account/CloseAccount.java
+ domain.account.CloseAccount
