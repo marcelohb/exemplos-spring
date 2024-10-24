@@ -10,7 +10,7 @@ import java.util.List;
 public class OrderService {
 
     public String createOrder(Order order) {
-        return "Order created";
+        return "Order created: " + order.toString();
     }
 
     public List<Order> getOrders() {
