@@ -2,11 +2,12 @@ package com.cake.application.domain;
 
 public class Order {
 
-    private String phoneNumber;
-    private String name;
-    private String address;
-    private String size;
-    private String flavor;
+    private final String phoneNumber;
+    private final String name;
+    private final String address;
+    private final String size;
+    private final String flavor;
+    private String state = "CREATED";
 
     public Order(String phoneNumber, String name, String address, String size, String flavor) {
         this.phoneNumber = phoneNumber;
@@ -34,6 +35,14 @@ public class Order {
 
     public String getFlavor() {
         return flavor;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String toString() {
+        return "Order: " + phoneNumber + ", " + name + ", " + address + ", " + size + ", " + flavor + ". State: " + state;
     }
 
 }

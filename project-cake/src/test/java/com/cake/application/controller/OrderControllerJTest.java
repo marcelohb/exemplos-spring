@@ -14,9 +14,13 @@ class OrderControllerJTest {
 
     @Test
     void createOrder() {
-        var anOrder = new Order("99988877", "John Doe", "123 Main Street", "Medium", "Bacon");
+        var phoneNumber = "99988877";
+        var name = "Marcelo";
+        var anOrder = new Order(phoneNumber, name, "123 Main Street", "Medium", "Bacon");
         var result = orderController.createOrder(anOrder);
         assertTrue(result.contains("Order created"));
+        assertTrue(result.contains(phoneNumber));
+        assertTrue(result.contains(name));
     }
 
     @Test
