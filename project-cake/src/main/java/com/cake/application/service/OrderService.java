@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -33,4 +34,10 @@ public class OrderService {
         return orders;
     }
 
+    public OrderDTO getOrderById(Long id) {
+        Optional<OrderEntity> orderEntity = orderRepository.findById(id);
+        if (orderEntity.isEmpty()) {
+            throw new IllegalArgumentException("Order not found");
+        }
+        return new OrderDTO(orderEntity.get().getId(), orderEntity.get().getPhoneNumber(), orderEntity.get().getName(), orderEntity.get().getAddress(), orderEntity.get().getSize(), orderEntity.get().getFlavor(), orderEntity.get().getState());    }
 }
