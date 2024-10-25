@@ -1,6 +1,10 @@
 package com.cake.application.service;
 
-import com.cake.application.domain.Order;
+import com.cake.domain.Order;
+import com.cake.infrastructure.dto.OrderDTO;
+import com.cake.infrastructure.model.OrderEntity;
+import com.cake.infrastructure.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,14 +13,24 @@ import java.util.List;
 @Service
 public class OrderService {
 
+    @Autowired
+    private OrderRepository orderRepository;
+
     public String createOrder(Order order) {
-        return "Order created: " + order.toString();
+        OrderEntity orderEntity = new OrderEntity(order.getPhoneNumber(), order.getName(), order.getAddress(), order.getSize(), order.getFlavor(), order.getState());
+        OrderEntity orderSaved = orderRepository.save(orderEntity);
+        OrderDTO orderDTO = new OrderDTO(orderSaved.getId(), orderSaved.getPhoneNumber(), orderSaved.getName(), orderSaved.getAddress(), orderSaved.getSize(), orderSaved.getFlavor(), orderSaved.getState());
+        return "Order ID: " + orderDTO.getId() + " created. Status: " + orderDTO.getState() + " order: " + orderDTO;
     }
 
-    public List<Order> getOrders() {
-        List<Order> orderList = new ArrayList<>();
-        var order1 = new Order("99988877", "John Doe", "123 Main Street", "Medium", "Bacon");
-        orderList.add(order1);
-        return orderList;
+    public List<OrderDTO> getOrders() {
+        List<OrderEntity> orderList = orderRepository.findAll();
+        List<OrderDTO> orders = new ArrayList<>();
+        for (OrderEntity order : orderList) {
+            OrderDTO orderDTO = new OrderDTO(order.getId(), order.getPhoneNumber(), order.getName(), order.getAddress(), order.getSize(), order.getFlavor(), order.getState());
+            orders.add(orderDTO);
+        }
+        return orders;
     }
+
 }

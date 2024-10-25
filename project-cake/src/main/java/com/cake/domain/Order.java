@@ -1,4 +1,4 @@
-package com.cake.application.domain;
+package com.cake.domain;
 
 public class Order {
 

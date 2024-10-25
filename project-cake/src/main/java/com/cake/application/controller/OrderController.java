@@ -1,7 +1,9 @@
 package com.cake.application.controller;
 
-import com.cake.application.domain.Order;
 import com.cake.application.service.OrderService;
+import com.cake.domain.Order;
+import com.cake.infrastructure.dto.OrderDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +12,8 @@ import java.util.List;
 @RequestMapping(value = "/order")
 public class OrderController {
 
-    private final OrderService orderService;
-
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
+    @Autowired
+    private OrderService orderService;
 
     @PostMapping(value = "/create")
     public String createOrder(@RequestBody Order order) {
@@ -22,7 +21,7 @@ public class OrderController {
     }
 
     @GetMapping(value = "/")
-    public List<Order> getOrders() {
+    public List<OrderDTO> getOrders() {
         return orderService.getOrders();
     }
 }

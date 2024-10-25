@@ -1,4 +1,4 @@
-package com.cake.application;
+package com.cake;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
