@@ -1,5 +1,7 @@
 package com.cake.domain;
 
+import com.cake.application.exception.IllegalOrderStateException;
+
 public class Order {
 
     private final String phoneNumber;
@@ -45,4 +47,18 @@ public class Order {
         return "Order: " + phoneNumber + ", " + name + ", " + address + ", " + size + ", " + flavor + ". State: " + state;
     }
 
+    public void accept() {
+        if (!this.state.equals("CREATED")) {
+            throw new IllegalOrderStateException("Cannot accept an order in state " + this.state);
+        }
+        this.state = "ACCEPTED";
+    }
+
+    public void preparing() {
+        this.state = "PREPARING";
+    }
+
+    public void reject() {
+        this.state = "REJECTED";
+    }
 }
