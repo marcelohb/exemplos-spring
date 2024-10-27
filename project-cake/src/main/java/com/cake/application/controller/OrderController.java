@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -33,6 +32,16 @@ public class OrderController {
         try {
             OrderDTO order = orderService.getOrderById(id);
             return ResponseEntity.ok(order);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping(value = "/flavor/{flavor}")
+    public ResponseEntity<List<OrderDTO>> getOrdersByFlavor(@PathVariable String flavor) {
+        try {
+            List<OrderDTO> orders = orderService.getOrdersByFlavor(flavor);
+            return ResponseEntity.ok(orders);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }

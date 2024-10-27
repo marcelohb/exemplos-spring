@@ -39,5 +39,10 @@ public class OrderService {
         if (orderEntity.isEmpty()) {
             throw new IllegalArgumentException("Order not found");
         }
-        return new OrderDTO(orderEntity.get().getId(), orderEntity.get().getPhoneNumber(), orderEntity.get().getName(), orderEntity.get().getAddress(), orderEntity.get().getSize(), orderEntity.get().getFlavor(), orderEntity.get().getState());    }
+        return new OrderDTO(orderEntity.get().getId(), orderEntity.get().getPhoneNumber(), orderEntity.get().getName(), orderEntity.get().getAddress(), orderEntity.get().getSize(), orderEntity.get().getFlavor(), orderEntity.get().getState());
+    }
+
+    public List<OrderDTO> getOrdersByFlavor(String flavor) {
+        return orderRepository.findByFlavor(flavor);
+    }
 }
