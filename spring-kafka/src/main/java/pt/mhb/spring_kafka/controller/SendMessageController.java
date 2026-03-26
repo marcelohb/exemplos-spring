@@ -17,7 +17,7 @@ public class SendMessageController {
         this.messageProducer = messageProducer;
     }
 
-    @PostMapping(value = "/send", consumes = "application/json")
+    @PostMapping(value = "/send", consumes = "text/plain")
     public ResponseEntity<String> sendMessage(@RequestParam String message) {
         messageProducer.sendMessage(message);
         return ResponseEntity.ok("Message \"" + message + "\" sent successfully");
